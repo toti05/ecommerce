@@ -3,8 +3,13 @@ const axios = require('axios');
 
 let cache = {};
 
+
 server.get('/', (req, res) => {
     let search = req.query.query;
+    // if (!search) {
+    //     console.log('entro')
+    //     return res.json([]);
+    // }
     if (!cache.hasOwnProperty(search)) {
         axios.get(`https://api.mercadolibre.com/sites/MLA/search?q=${search}`)
             .then(rest => {

@@ -28,11 +28,13 @@ const Product = ({ product }) => {
         <Container className="card container-fluid lg-col-12 d-sm-inline-flex pagination" style={{ width: "18rem" }}>
             <img src={product.thumbnail} className="card-img-top" alt="esta es una imagen" />
             <div className="card-body">
-                <p className="card-text">Descripción:{product.title}</p>
-                <p className="card-text">${product.price}</p>
-                <p className="card-text">Condición:{product.condition}</p>
+                <p className="card-text">Descripción: {product.title}</p>
+                <p className="card-text">${product.price}{' '}{product.currency_id}</p>
+                <p className="card-text">Condición: {product.condition}</p>
+                <p className="card-text">Stock: {product.available_quantity}</p>
                 <Link to={'/detalle'}><Button data={product.id} variant="primary" type="button" onClick={() => { dispatch(detalleProduct(product)); clickAdd(product) }}>Ver mas</Button></Link>
             </div>
+
         </Container>
     );
 }
