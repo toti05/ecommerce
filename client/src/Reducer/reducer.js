@@ -4,16 +4,19 @@ import {
     PAGINACION,
     ORDENA_DESCENDENTE,
     ORDENA_ASCENDENTE,
-    PRODUCTOSNUEVOS
+    PRODUCTOS_NUEVOS,
+    PRODUCTOS_USADOS
 } from "../Actions/action";
 
 const initalStore = {
     products: [],
+    products1: [],
     detalle_producto: [],
     paginacion: [],
     paginaActual: 0,
     antes: 0,
-    despues: 0
+    despues: 0,
+    filtrado: false
 }
 
 const reducer = (state = initalStore, actions) => {
@@ -21,9 +24,12 @@ const reducer = (state = initalStore, actions) => {
 
         case BUSCAR_PRODUCTOIDS: {
             return {
-                products: actions.producto.data
+                ...state,
+                products: actions.producto.data,
+                products1: actions.producto.data
             }
         }
+
         case DETALLE_PRODUCTO: {
             return {
                 ...state,
@@ -36,6 +42,7 @@ const reducer = (state = initalStore, actions) => {
 
             let inicio;
             let fin;
+
             if (actions.page > 0 && actions.page <= actions.limit) {
                 inicio = 30 * (actions.page - 1);
                 fin = 30 * actions.page;
@@ -90,14 +97,22 @@ const reducer = (state = initalStore, actions) => {
             }
         }
 
-        case PRODUCTOSNUEVOS: {
-            console.log(actions.products.filter(products => actions.products.length < 50))
+        case PRODUCTOS_NUEVOS: {
             return {
                 ...state,
-                paginacion: actions.products.filter(products => actions.products.length > 3)
-
+                products: actions.products.filter(producto => producto.condition === 'new'),
+                filtrado: true
             }
         }
+
+        case PRODUCTOS_USADOS: {
+            return {
+                ...state,
+                products: actions.products.filter(producto => producto.condition === 'used'),
+                filtrado: true
+            }
+        }
+
 
         default: return state
     }

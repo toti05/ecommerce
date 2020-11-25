@@ -8,13 +8,13 @@ const Card = () => {
     console.log(product);
     return (
 
-        <div className="card mb-3" style={{ maxWidth: '540px' }}>
+        <div className="card m-3  border-primary" style={{ maxWidth: '540px' }}>
             <div className="row no-gutters">
                 {/* <div className="col-md-4">
                     <img src="..." className="card-img" alt="..." />
                 </div> */}
                 <div className="col-md-8">
-                    <div className="card-body">
+                    <div className="card-body font-weight-bold">
                         <img src={product.thumbnail} className="card-img-top" alt="esta es una imagen" />
                         <p className="card-text">Descripción: {product.title}</p>
                         <p className="card-text">${product.price}{' '}{product.currency_id}</p>
@@ -22,9 +22,10 @@ const Card = () => {
                         <p className="card-text">Stock: {product.available_quantity}</p>
                         <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
                     </div>
+
                 </div>
             </div>
-            <Button className='mr-3 h-25 w-25' variant="primary" type="button" onClick={() => window.history.back()} >Volver atras</Button>
+            <Button className='m-3 h-25 w-25' variant="primary" type="button" onClick={() => window.history.back()} >Volver atras</Button>
         </div>
 
     );

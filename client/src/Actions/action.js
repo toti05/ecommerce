@@ -4,7 +4,8 @@ export const DETALLE_PRODUCTO = "DETALLE_PRODUCTO";
 export const PAGINACION = "PAGINACION";
 export const ORDENA_DESCENDENTE = "ORDENA_DESCENDENTE";
 export const ORDENA_ASCENDENTE = "ORDENA_ASCENDENTE";
-export const PRODUCTOSNUEVOS = 'PRODUCTOSNUEVOS';
+export const PRODUCTOS_NUEVOS = 'PRODUCTOS_NUEVOS';
+export const PRODUCTOS_USADOS = 'PRODUCTOS_USADOS';
 
 export function mostrarBusqueda(search) {
     return function (dispatch) {
@@ -28,12 +29,13 @@ export function detalleProduct(products) {
     }
 }
 
-export function paginacion(products, page, limit) {
+export function paginacion(products, page, limit, filter) {
     return {
         type: PAGINACION,
         products: products,
         page: page,
         limit: limit,
+        filter: filter
     }
 }
 
@@ -51,10 +53,16 @@ export function ordenarAscendente(products) {
     }
 }
 
-export function productoNuevo(products, condition) {
+export function productoNuevos(products) {
     return {
-        type: PRODUCTOSNUEVOS,
-        products: products,
-        condition: condition
+        type: PRODUCTOS_NUEVOS,
+        products: products
+    }
+}
+
+export function productoUsados(products) {
+    return {
+        type: PRODUCTOS_USADOS,
+        products: products
     }
 }

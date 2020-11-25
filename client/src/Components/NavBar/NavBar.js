@@ -4,12 +4,12 @@ import Search from '../Search/Search';
 import styles from './navbar.module.css';
 import { Dropdown } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { ordenarAscendente, ordenarDescendete, productoNuevo } from '../../Actions/action';
+import { ordenarAscendente, ordenarDescendete, productoNuevos, productoUsados } from '../../Actions/action';
 import { Link } from 'react-router-dom';
 
 const NavBar = () => {
 
-    const products1 = useSelector(state => state.products);
+    const products1 = useSelector(state => state.products1);
     const dispatch = useDispatch();
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -36,38 +36,32 @@ const NavBar = () => {
     }
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light bg-primary mb-3 container-fluid sm-col-12 ">
 
-            <h3 className="navbar-brand">Mercado Libre</h3>
+            <h3 className="navbar-brand font-weight-bold text-white">Mercado Libre</h3>
             <div>
                 <ul style={{ display: 'flex', listStyle: 'none' }}>
                     <li>
-                        <Dropdown>
-                            <Dropdown.Toggle variant="outline-primary" id="dropdown-basic">
-                                Ordenar
-            </Dropdown.Toggle>
-
-                            <Dropdown.Menu>
-
-                                <Dropdown.Item href="#!"><Link to={'/catalogue'} onClick={() => dispatch(ordenarAscendente(products1))}>Precio ascendente</Link></Dropdown.Item>
-                                <Dropdown.Item href="#!"><Link to={'/catalogue'} onClick={() => dispatch(ordenarDescendete(products1))}>Precio descendente</Link></Dropdown.Item>
-
-                            </Dropdown.Menu>
-                        </Dropdown>
-                    </li>
-                    <li>
-                        <Dropdown>
-                            <Dropdown.Toggle variant="outline-primary ml-2 mr-2" id="dropdown-basic">
+                        <Dropdown >
+                            <Dropdown.Toggle variant="outline-primary  text-white mr-4 mt-2 " id="dropdown-basic">
                                 Filtrar
-            </Dropdown.Toggle>
-
+                            </Dropdown.Toggle>
                             <Dropdown.Menu>
-                                <Dropdown.Item href="#!"><Link to={'/catalogue'} onClick={() => dispatch(productoNuevo(products1))}> Condicion nuevo</Link></Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">condicion usado</Dropdown.Item>
+                                <Dropdown.Item href="#!"><Link to={'/filtros'} onClick={() => dispatch(ordenarAscendente(products1))}>Precio ascendente</Link></Dropdown.Item>
+                                <Dropdown.Item href="#!"><Link to={'/filtros'} onClick={() => dispatch(ordenarDescendete(products1))}>Precio descendente</Link></Dropdown.Item>
+                                <Dropdown.Item href="#!"><Link to={'/filtros'} onClick={() => dispatch(productoNuevos(products1))}>Condicion nuevo</Link></Dropdown.Item>
+                                <Dropdown.Item href="#!"><Link to={'/filtros'} onClick={() => dispatch(productoUsados(products1))}>condicion usado</Link></Dropdown.Item>
                             </Dropdown.Menu>
+
+                            {/* <div class="form-check form-check-inline">
+                                <input type="checkbox" class="form-check-input" id="materialInline2" />
+                                <label class="form-check-label" for="materialInline2">Usados</label>
+                            </div> */}
+
                         </Dropdown>
+
                     </li>
-                    <li>
+                    <li >
                         <Search />
                     </li>
                 </ul>

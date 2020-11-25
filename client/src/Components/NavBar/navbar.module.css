@@ -33,3 +33,7 @@ html{
     background:  linear-gradient(1deg, #03a9f4,#377ED1)!important;
     color:white
   }
+
+  .fondo{
+    background-color: #003169;
+  }

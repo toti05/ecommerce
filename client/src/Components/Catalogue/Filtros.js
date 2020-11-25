@@ -2,17 +2,21 @@ import React, { useEffect } from 'react';
 import Card from './Product';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { paginacion } from '../../Actions/action';
+import { paginacion } from '../../Actions/action'
 
-const Catalogue = () => {
+const Filtros = () => {
 
-    const products1 = useSelector(state => state.products);
-    // console.log(products1)
-    const paginacion1 = useSelector(state => state.paginacion);
+    //const products1 = useSelector(state => state.products);
+    const products2 = useSelector(state => state.products);
+    //const filtrado = useSelector(state => state.filtrado);
+    //const paginacion1 = useSelector(state => state.paginacion);
+    const paginacion2 = useSelector(state => state.paginacion);
     const antes = useSelector(state => state.antes);
     const despues = useSelector(state => state.despues);
 
-    let i = Math.round(products1.length / 30);
+
+
+    let i = Math.round(products2.length / 30);
     let j = 0;
     let pageNum = 1;
     let liPage = [];
@@ -25,21 +29,22 @@ const Catalogue = () => {
 
     const pagina = (e) => {
         const j1 = e.target.id;
-        dispatch(paginacion(products1, j1, i));
+
+        dispatch(paginacion(products2, j1, i));
     }
 
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(paginacion(products1, 1, i))
-    }, [products1, dispatch, i])
+        dispatch(paginacion(products2, 1, i))
+    }, [products2, dispatch, i])
 
     return (
         <>
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', alignItems: 'center' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
                 {
-                    !paginacion1 ? <h3 className='mt-3'>Necesita buscar algun producto</h3>
+                    !paginacion2 ? <h3 className='mt-3'>Necesita buscar algun producto</h3>
                         :
-                        paginacion1.map(product => {
+                        paginacion2.map(product => {
                             return <Card key={product.id} product={product} />
                         })
 
@@ -48,7 +53,7 @@ const Catalogue = () => {
             <nav aria-label="Page navigation example">
                 <ul className="pagination">
                     <li className="page-item">
-                        <a className="page-link" href="#!" aria-label="Previous" onClick={() => dispatch(paginacion(products1, antes, i))}>
+                        <a className="page-link" href="#!" aria-label="Previous" onClick={() => dispatch(paginacion(products2, antes, i))}>
                             <span aria-hidden="true">&laquo;</span>
                             <span className="sr-only">Previous</span>
                         </a>
@@ -59,7 +64,7 @@ const Catalogue = () => {
                         })
                     }
                     <li className="page-item">
-                        <a className="page-link" href="#!" aria-label="Next" onClick={() => dispatch(paginacion(products1, despues, i))}>
+                        <a className="page-link" href="#!" aria-label="Next" onClick={() => dispatch(paginacion(products2, despues, i))}>
                             <span aria-hidden="true">&raquo;</span>
                             <span className="sr-only">Next</span>
                         </a>
@@ -70,4 +75,4 @@ const Catalogue = () => {
     );
 }
 
-export default Catalogue;
+export default Filtros;
