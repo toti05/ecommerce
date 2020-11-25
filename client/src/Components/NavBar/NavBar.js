@@ -39,7 +39,7 @@ const NavBar = () => {
         <nav className="navbar navbar-expand-lg navbar-light bg-primary mb-3 container-fluid sm-col-12 ">
 
             <h3 className="navbar-brand font-weight-bold text-white">Mercado Libre</h3>
-            <div>
+            <div >
                 <ul style={{ display: 'flex', listStyle: 'none' }}>
                     <li>
                         <Dropdown >
@@ -61,7 +61,7 @@ const NavBar = () => {
                         </Dropdown>
 
                     </li>
-                    <li >
+                    <li className='d-flex ml-5' >
                         <Search />
                     </li>
                 </ul>

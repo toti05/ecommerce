@@ -17,10 +17,9 @@ const Card = () => {
                     <div className="card-body font-weight-bold">
                         <img src={product.thumbnail} className="card-img-top" alt="esta es una imagen" />
                         <p className="card-text">Descripción: {product.title}</p>
-                        <p className="card-text">${product.price}{' '}{product.currency_id}</p>
+                        <p className="card-text">Precio ${product.price}{' '}{product.currency_id}</p>
                         <p className="card-text">Condición: {product.condition}</p>
                         <p className="card-text">Stock: {product.available_quantity}</p>
-                        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
                     </div>
 
                 </div>

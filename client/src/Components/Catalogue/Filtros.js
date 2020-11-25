@@ -51,7 +51,7 @@ const Filtros = () => {
                 }
             </div>
             <nav aria-label="Page navigation example">
-                <ul className="pagination">
+                <ul className="pagination list-inline mx-auto justify-content-center">
                     <li className="page-item">
                         <a className="page-link" href="#!" aria-label="Previous" onClick={() => dispatch(paginacion(products2, antes, i))}>
                             <span aria-hidden="true">&laquo;</span>

@@ -27,9 +27,9 @@ const Product = ({ product }) => {
 
         <div className="card border-primary container-fluid lg-col-12 d-sm-inline-flex pagination " style={{ width: "20rem", marginBottom: "2rem" }}>
             <div className="card-body font-weight-bold ">
-                <img src={product.thumbnail} className="card-img-top" alt="esta es una imagen" />
+                <img src={product.thumbnail} className="card-img-top" style={{ maxWidth: '10rem' }} alt="esta es una imagen" />
                 <p className="card-text">Descripción: {product.title}</p>
-                <p className="card-text">${product.price}{' '}{product.currency_id}</p>
+                <p className="card-text">Precio: ${product.price}{' '}{product.currency_id}</p>
                 <p className="card-text">Condición: {product.condition}</p>
                 <p className="card-text">Stock: {product.available_quantity}</p>
                 <Link to={'/detalle'}><Button data={product.id} className="primary" type="button" onClick={() => { dispatch(detalleProduct(product)); clickAdd(product) }}>Ver mas</Button></Link>
