@@ -47,10 +47,10 @@ const NavBar = () => {
                                 Filtrar
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                                <Dropdown.Item href="#!"><Link to={'/filtros'} onClick={() => dispatch(ordenarAscendente(products1))}>Precio ascendente</Link></Dropdown.Item>
-                                <Dropdown.Item href="#!"><Link to={'/filtros'} onClick={() => dispatch(ordenarDescendete(products1))}>Precio descendente</Link></Dropdown.Item>
-                                <Dropdown.Item href="#!"><Link to={'/filtros'} onClick={() => dispatch(productoNuevos(products1))}>Condicion nuevo</Link></Dropdown.Item>
-                                <Dropdown.Item href="#!"><Link to={'/filtros'} onClick={() => dispatch(productoUsados(products1))}>condicion usado</Link></Dropdown.Item>
+                                <Dropdown.Item href="#!"><Link to={'/filtros'} onClick={() => dispatch(ordenarAscendente(products1))}>Precio Ascendente</Link></Dropdown.Item>
+                                <Dropdown.Item href="#!"><Link to={'/filtros'} onClick={() => dispatch(ordenarDescendete(products1))}>Precio Descendente</Link></Dropdown.Item>
+                                <Dropdown.Item href="#!"><Link to={'/filtros'} onClick={() => dispatch(productoNuevos(products1))}>Condición Nuevo</Link></Dropdown.Item>
+                                <Dropdown.Item href="#!"><Link to={'/filtros'} onClick={() => dispatch(productoUsados(products1))}>Condición Usado</Link></Dropdown.Item>
                             </Dropdown.Menu>
 
                             {/* <div class="form-check form-check-inline">
@@ -67,6 +67,7 @@ const NavBar = () => {
                 </ul>
             </div>
             <button onClick={topFunction} id="myBtn" className={styles.myBtn} title="Go to top"><i className="fas fa-chevron-up"></i></button>
+
         </nav>
     )
 }

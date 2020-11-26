@@ -6,11 +6,12 @@ let cache = {};
 
 server.get('/', (req, res) => {
     let search = req.query.query;
-
+    console.log(search)
     if (search === '') {
         console.log('entro')
 
-        return res.json([]);
+
+        return res.json([]), res.status(200);
     }
 
     if (!cache.hasOwnProperty(search)) {

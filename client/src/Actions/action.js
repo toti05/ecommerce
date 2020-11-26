@@ -29,13 +29,10 @@ export function detalleProduct(products) {
     }
 }
 
-export function paginacion(products, page, limit, filter) {
+export function paginacion(products) {
     return {
         type: PAGINACION,
         products: products,
-        page: page,
-        limit: limit,
-        filter: filter
     }
 }
 

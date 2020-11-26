@@ -13,10 +13,6 @@ const initalStore = {
     products1: [],
     detalle_producto: [],
     paginacion: [],
-    paginaActual: 0,
-    antes: 0,
-    despues: 0,
-    filtrado: false
 }
 
 const reducer = (state = initalStore, actions) => {
@@ -39,27 +35,10 @@ const reducer = (state = initalStore, actions) => {
         }
 
         case PAGINACION: {
-
-            let inicio;
-            let fin;
-
-            if (actions.page > 0 && actions.page <= actions.limit) {
-                inicio = 30 * (actions.page - 1);
-                fin = 30 * actions.page;
-            } else if (actions.page <= 0) {
-                inicio = 0;
-                fin = 30;
-            } else if (actions.page > actions.limit) {
-                inicio = 30 * (actions.limit - 1);
-                fin = 30 * (actions.limit);
-            }
-
             return {
                 ...state,
-                paginacion: actions.products.slice(inicio, fin),
-                paginaActual: actions.page,
-                antes: actions.page === 0 ? 1 : actions.page - 1,
-                despues: actions.page === 3 ? 2 : actions.page - 1 + 2
+                paginacion: actions.products.slice(0, 30),
+
             }
         }
 

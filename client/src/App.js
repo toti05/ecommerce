@@ -9,6 +9,7 @@ function App() {
   return (
     <Router >
       <Route path='/' component={Navbar} />
+      <Route exact path='/' component={Filtros} />
       <Route exact path='/filtros' component={Filtros} />
       <Route exact path='/detalle' component={Card} />
     </Router>
